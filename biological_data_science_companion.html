@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biological Data Science with Python — Course Companion</title>
+  <style>
+    :root {
+      --primary: #1a56db;
+      --primary-dark: #1e429f;
+      --secondary: #0e9f6e;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --code-bg: #0f172a;
+      --code-text: #38bdf8;
+      --accent: #f59e0b;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 0 1rem 4rem 1rem;
+    }
+    header {
+      max-width: 1000px;
+      margin: 2rem auto 2rem auto;
+      text-align: center;
+      background: linear-gradient(135deg, #1e429f, #0e9f6e);
+      color: white;
+      padding: 2.5rem 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 750px;
+      margin: 0 auto 1.5rem auto;
+    }
+    .cta-banner {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: #ffffff;
+      color: var(--primary-dark);
+      padding: 0.85rem 1.75rem;
+      border-radius: 9999px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .cta-banner:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .section-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      padding: 2rem;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    }
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      background-color: #e0e7ff;
+      color: #3730a3;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+    .topic-card {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      border-radius: 6px;
+      padding: 1.2rem;
+      border-top: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .topic-card.biology {
+      border-left-color: var(--secondary);
+    }
+    .topic-card h4 {
+      font-size: 1.15rem;
+      color: #0f172a;
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .topic-card p {
+      font-size: 0.95rem;
+      color: #334155;
+      margin-bottom: 0.5rem;
+    }
+    .topic-card ul {
+      margin-left: 1.25rem;
+      font-size: 0.92rem;
+      color: #475569;
+    }
+    .topic-card ul li {
+      margin-bottom: 0.35rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+    th, td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+    th {
+      background-color: #f1f5f9;
+      color: #0f172a;
+      font-weight: 600;
+    }
+    tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      background-color: #f1f5f9;
+      color: #0369a1;
+      padding: 0.15rem 0.35rem;
+      border-radius: 4px;
+      font-size: 0.88em;
+    }
+    pre {
+      background-color: var(--code-bg);
+      color: var(--code-text);
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      margin: 0.75rem 0;
+    }
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Biological Data Science with Python</h1>
+    <p>Complete curriculum companion for Classes 1–5: Python programming tailored specifically for Biotechnology & Genetics/Molecular Biology students.</p>
+    <a class="cta-banner" href="https://colab.research.google.com/drive/1D3DTEk92hFYkMm2-nqM8QMAoxlANyx1Z?usp=sharing" target="_blank" rel="noopener noreferrer">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M16.9 13.4l1.4-1.4c-.4-.5-.9-.9-1.5-1.2l-.7 1.8c.3.2.6.5.8.8zm-9.8 0c.2-.3.5-.6.8-.8l-.7-1.8c-.6.3-1.1.7-1.5 1.2l1.4 1.4zm4.9-5.4c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0-2c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zm8 10c0-2.2-1.8-4-4-4-.4 0-.8.1-1.2.2l1.5 1.5c.6.2 1.1.6 1.4 1.1.4.6.6 1.4.5 2.2h1.8zm-16 0h1.8c-.1-.8.1-1.6.5-2.2.3-.5.8-.9 1.4-1.1l1.5-1.5c-.4-.1-.8-.2-1.2-.2-2.2 0-4 1.8-4 4z"/></svg>
+      Open Google Colab Notebook (Classes 1–5)
+    </a>
+  </header>
+
+  <div class="container">
+
+    <!-- SECTION 1: WHAT IS INCLUDED IN THE NOTEBOOK -->
+    <section class="section-card">
+      <h2 class="section-title">
+        <span>Part 1: Notebook Syllabus & Curriculum Contents</span>
+        <span class="badge">Classes 1–5</span>
+      </h2>
+      <p style="margin-bottom: 1.25rem; color: #475569;">
+        The course notebook follows an interactive <strong>5-step framework</strong> (<em>Predict &rarr; Run &rarr; Explain &rarr; Biological Connection &rarr; Modify</em>), intentionally omitting generic computer-science examples in favor of wet-lab and sequence-based assays.
+      </p>
+
+      <div class="grid-2">
+        <div class="topic-card">
+          <h4>Class 1: Basics & Documentation</h4>
+          <ul>
+            <li><code>print()</code> with multiple arguments, labels, and numeric parameters.</li>
+            <li>Scientific code comments (<code>#</code>) to track assay conditions, buffer concentrations, and data provenance.</li>
+          </ul>
+        </div>
+
+        <div class="topic-card">
+          <h4>Class 2: Numbers & Logic</h4>
+          <ul>
+            <li><code>int</code>: Discrete cell counts, colony counts, and aliquoting math with floor division (<code>//</code>) and modulo (<code>%</code>).</li>
+            <li><code>float</code>: Continuous assay measurements ($OD_{600}$, pH, concentrations) and precision rounding.</li>
+            <li><code>bool</code>: Assay quality gates, comparison operators (<code>&gt;</code>, <code>==</code>, <code>!=</code>), and logical gates (<code>and</code>, <code>or</code>, <code>not</code>).</li>
+          </ul>
+        </div>
+
+        <div class="topic-card">
+          <h4>Class 3: Strings & DNA Sequences</h4>
+          <ul>
+            <li>String operations: Concatenation (ligation), repetition (telomeres), length, indexing, and slicing (5' and 3' flanks).</li>
+            <li>12 Core String Methods: <code>.upper()</code>, <code>.lower()</code>, <code>.strip()</code>, <code>.replace()</code>, <code>.count()</code>, <code>.find()</code>, <code>.index()</code>, <code>.startswith()</code>, <code>.endswith()</code>, <code>.split()</code>, <code>.join()</code>, <code>.capitalize()</code>, <code>.title()</code>.</li>
+          </ul>
+        </div>
+
+        <div class="topic-card">
+          <h4>Class 4: Collections & Casting</h4>
+          <ul>
+            <li><code>list</code>: Replicates, built-in stats (<code>len</code>, <code>max</code>, <code>min</code>, <code>sum</code>, <code>sorted</code>), and all 11 methods (including <code>.sort()</code> vs <code>sorted()</code>).</li>
+            <li><code>tuple</code>: Immutable constants (canonical bases <code>("A", "T", "G", "C")</code>).</li>
+            <li><code>dict</code>: Sample metadata mapping IDs to conditions.</li>
+            <li><code>set</code>: Deduplication and Venn comparisons (<code>.union()</code>, <code>.intersection()</code>, <code>.difference()</code>).</li>
+            <li>Type Conversion: Parsing numeric strings to numbers.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top: 1.5rem;">
+        <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: #0f172a;">Class 5 & Capstone: Integrated Sequence Practical</h3>
+        <p style="font-size: 0.95rem; color: #475569; margin-bottom: 0.75rem;">
+          Synthesizes string slicing, nucleotide quantification, arithmetic formulas, and formatted reporting to compute GC percentage ($	ext{GC\%} = rac{G + C}{	ext{Total Length}} 	imes 100$). Includes a structured Mini-Project prompt with full rubrics for student submission.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 2: BIOLOGY FOR DATA SCIENTISTS -->
+    <section class="section-card">
+      <h2 class="section-title">
+        <span>Part 2: Concise Biology Cheat Sheet for Data Science Instructors</span>
+        <span class="badge" style="background: #dcfce7; color: #166534;">Non-Biology Primer</span>
+      </h2>
+      <p style="margin-bottom: 1.25rem; color: #475569;">
+        A practical translation of biological lab concepts into data types, physical mechanics, and quantitative operations.
+      </p>
+
+      <div class="grid-2">
+        <div class="topic-card biology">
+          <h4>1. Cell Counting & Hemocytometer <span class="badge">int</span></h4>
+          <p><strong>Physical Meaning:</strong> A hemocytometer is a thick glass microscope slide with a precision-etched grid. Researchers manually tally cells in each grid square under a microscope.</p>
+          <p><strong>Data Science Logic:</strong> Living cells cannot be cut in half; they are strictly discrete count data (Poisson-distributed integers).</p>
+          <p><strong>Aliquoting (<code>//</code> and <code>%</code>):</strong> Taking a 1,003 &micro;L bulk solution and distributing it across 4 reaction tubes: <code>1003 // 4 = 250 &micro;L</code> per tube, leaving <code>1003 % 4 = 3 &micro;L</code> of leftover "dead volume".</p>
+        </div>
+
+        <div class="topic-card biology">
+          <h4>2. $OD_{600}$ & Continuous Assays <span class="badge">float</span></h4>
+          <p><strong>Physical Meaning:</strong> A spectrophotometer beams 600 nm wavelength light through liquid bacteria. As cells divide, the liquid grows turbid/cloudy and scatters light.</p>
+          <p><strong>Data Science Logic:</strong> Higher $OD_{600}$ = higher bacterial cell density. Because spectrophotometers and pH electrodes measure continuous analog voltages, they map to Python floating-point values requiring precision rounding.</p>
+        </div>
+
+        <div class="topic-card biology">
+          <h4>3. DNA Sequences & Polarity <span class="badge">str</span></h4>
+          <p><strong>Chemical Alphabet:</strong> DNA polymers are chains composed of 4 chemical letters: Adenine (<strong>A</strong>), Thymine (<strong>T</strong>), Guanine (<strong>G</strong>), and Cytosine (<strong>C</strong>).</p>
+          <p><strong>Directional Polarity (5' &rarr; 3'):</strong> DNA has asymmetrical chemical ends named 5' ("five-prime") and 3' ("three-prime"). Text strings represent DNA from 5' to 3':
+          <ul>
+            <li><code>seq[:5]</code> is the <strong>5' terminal flank</strong>.</li>
+            <li><code>seq[-5:]</code> is the <strong>3' terminal flank</strong>.</li>
+          </ul>
+          </p>
+        </div>
+
+        <div class="topic-card biology">
+          <h4>4. Codons & Transcription <span class="badge">Methods</span></h4>
+          <p><strong>Codons (3-letter tokens):</strong> Ribosomes read RNA in triplets to assemble amino acids. <code>ATG</code> is the universal <strong>start codon</strong> (initiator). <code>TAA</code>, <code>TAG</code>, and <code>TGA</code> are <strong>stop codons</strong> (terminators).</p>
+          <p><strong>In Silico Transcription:</strong> Cells copy DNA into mRNA by swapping Thymine for Uracil (<strong>U</strong>):
+          <pre>mrna = dna.replace("T", "U")</pre>
+          </p>
+        </div>
+
+        <div class="topic-card biology">
+          <h4>5. GC Content (%) <span class="badge">Formula</span></h4>
+          <p><strong>Formula:</strong> $	ext{GC\%} = rac{	ext{G count} + 	ext{C count}}{	ext{Total Sequence Length}} 	imes 100$</p>
+          <p><strong>Why it Matters:</strong> A–T pairs share 2 hydrogen bonds; G–C pairs share 3 hydrogen bonds. Sequences with higher GC content require higher temperatures to denature/melt. Biologists calculate GC% to design reliable PCR primers.</p>
+        </div>
+
+        <div class="topic-card biology">
+          <h4>6. Replicates & Metadata <span class="badge">list &amp; dict</span></h4>
+          <p><strong>Biological Replicates (<code>list</code>):</strong> Living systems are intrinsically noisy. Assays are run in duplicates or triplicates (e.g. <code>[0.42, 0.58, 0.71]</code>) to compute means and standard errors.</p>
+          <p><strong>Clinical Metadata (<code>dict</code>):</strong> An assay number is useless without context. A dictionary maps sample keys (<code>"id"</code>, <code>"treatment"</code>, <code>"temp"</code>) to experimental conditions.</p>
+        </div>
+
+        <div class="topic-card biology" style="grid-column: 1 / -1;">
+          <h4>7. Differential Gene Expression & Pathway Overlap <span class="badge">set</span></h4>
+          <p><strong>Biological Scenario:</strong> Exposing cells to distinct stressors (e.g. Hypoxia vs. Oxidative Stress) activates different defense genes.</p>
+          <p><strong>Set Logic in Genomics:</strong>
+            <ul>
+              <li><strong>Union (<code>.union()</code>):</strong> The complete pan-experiment catalogue of responsive biomarkers.</li>
+              <li><strong>Intersection (<code>.intersection()</code>):</strong> The common stress-response core shared by both conditions.</li>
+              <li><strong>Difference (<code>.difference()</code>):</strong> Biomarkers unique and specific to a single condition.</li>
+            </ul>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: QUICK REFERENCE TABLE -->
+    <section class="section-card">
+      <h2 class="section-title">
+        <span>Part 3: Data-Type Mapping Reference Table</span>
+      </h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Biological Example</th>
+            <th>Primary Laboratory Purpose</th>
+            <th>Key Operations / Methods</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>int</code></td>
+            <td><code>cell_count = 250</code></td>
+            <td>Discrete cell counts, aliquoting, read depth</td>
+            <td><code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>//</code>, <code>%</code>, <code>**</code></td>
+          </tr>
+          <tr>
+            <td><code>float</code></td>
+            <td><code>ph = 7.35</code>, <code>od600 = 0.42</code></td>
+            <td>Continuous sensor & spectrophotometer values</td>
+            <td><code>round(val, 2)</code>, arithmetic, comparisons</td>
+          </tr>
+          <tr>
+            <td><code>bool</code></td>
+            <td><code>is_control = True</code></td>
+            <td>Quality control pass/fail gates, flags</td>
+            <td><code>&gt;</code>, <code>&lt;</code>, <code>==</code>, <code>!=</code>, <code>and</code>, <code>or</code>, <code>not</code></td>
+          </tr>
+          <tr>
+            <td><code>str</code></td>
+            <td><code>seq = "ATGCGTAC"</code></td>
+            <td>DNA / RNA / Protein primary sequences</td>
+            <td><code>len()</code>, <code>[:]</code>, <code>.count()</code>, <code>.upper()</code>, <code>.replace()</code></td>
+          </tr>
+          <tr>
+            <td><code>list</code></td>
+            <td><code>[0.42, 0.58, 0.71]</code></td>
+            <td>Experimental replicate batches & time series</td>
+            <td><code>.append()</code>, <code>.sort()</code>, <code>max()</code>, <code>min()</code>, <code>sum()</code></td>
+          </tr>
+          <tr>
+            <td><code>tuple</code></td>
+            <td><code>("A", "T", "G", "C")</code></td>
+            <td>Fixed canonical alphabets & assay constants</td>
+            <td><code>len()</code>, indexing, immutability check</td>
+          </tr>
+          <tr>
+            <td><code>dict</code></td>
+            <td><code>{"id": "S1", "pH": 7.2}</code></td>
+            <td>Sample tracking & clinical metadata</td>
+            <td><code>.keys()</code>, <code>.values()</code>, <code>.get()</code>, <code>d[k] = v</code></td>
+          </tr>
+          <tr>
+            <td><code>set</code></td>
+            <td><code>{"TP53", "BRCA1"}</code></td>
+            <td>Differentially expressed gene sets</td>
+            <td><code>.union()</code>, <code>.intersection()</code>, <code>.difference()</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>Biological Data Science Course Companion &bull; Classes 1–5 &bull; Biotechnology + Genetics & Molecular Biology</p>
+    <p style="margin-top: 0.5rem;">Interactive Colab Workspace: <a href="https://colab.research.google.com/drive/1D3DTEk92hFYkMm2-nqM8QMAoxlANyx1Z?usp=sharing" style="color: var(--primary);">Open Notebook</a></p>
+  </footer>
+
+</body>
+</html>
